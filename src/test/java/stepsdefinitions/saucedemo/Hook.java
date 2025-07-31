@@ -11,12 +11,12 @@ import net.thucydides.core.webdriver.ThucydidesWebDriverSupport;
 
 public class Hook {
 
-    @Before
+    @Before(order = 1)
     public void setTheStage(){
         OnStage.setTheStage(new OnlineCast());
     }
 
-    @Before
+    @Before(order = 2)
     public void abrirNavegador(Scenario scenario){
         OnStage.theActorCalled("Juan Carlos").can(BrowseTheWeb.with(ThucydidesWebDriverSupport.getDriver()));
 

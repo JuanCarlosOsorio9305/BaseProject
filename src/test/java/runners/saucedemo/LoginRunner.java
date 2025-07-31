@@ -3,6 +3,8 @@ package runners.saucedemo;
 import io.cucumber.core.options.Constants;
 import org.junit.platform.suite.api.*;
 
+import static io.cucumber.junit.platform.engine.Constants.PLUGIN_PROPERTY_NAME;
+
 @Suite
 @IncludeEngines("cucumber")
 @SelectClasspathResource("features/saucedemo/login.feature")
@@ -13,6 +15,9 @@ import org.junit.platform.suite.api.*;
         key = Constants.SNIPPET_TYPE_PROPERTY_NAME,
         value = "camelcase"
 )
-@IncludeTags("@smokeTest")
+@ConfigurationParameter(
+        key = PLUGIN_PROPERTY_NAME, value = "io.cucumber.core.plugin.SerenityReporterParallel,pretty,timeline:build/test-results/timeline"
+)
+//@IncludeTags("smokeTest")
 public class LoginRunner {
 }

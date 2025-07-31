@@ -63,4 +63,12 @@ serenity {
 }
 gradle.startParameter.continueOnFailure = true
 
-test.finalizedBy(aggregate, reports)
+test.finalizedBy('aggregate')
+
+tasks.named('aggregate') {
+    finalizedBy('reports')
+}
+
+tasks.named('checkOutcomes') {
+    dependsOn('reports')
+}

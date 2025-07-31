@@ -9,7 +9,7 @@ Característica: Autenticación en SauceDemo
     Dado que el usuario este en la página de login de Sauce Demo
 
 
-  @login_exitoso @smokeTest
+  @smokeTest
   Escenario: Inicio de sesión exitoso con usuario estándar
     Cuando el usuario inicia sesión con credenciales de "USUARIO_ESTANDAR"
     Entonces debería ver la pagina de productos

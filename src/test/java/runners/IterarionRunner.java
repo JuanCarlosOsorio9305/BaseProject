@@ -15,7 +15,7 @@ import static io.cucumber.junit.platform.engine.Constants.*;
 @SelectClasspathResource("/features/iterations/iterations.feature")
 @ConfigurationParameter(
         key = GLUE_PROPERTY_NAME,
-        value = "stepsdefinitions1"
+        value = "stepsdefinitions"
 )
 @ConfigurationParameter(
         key = PLUGIN_PROPERTY_NAME, value = "io.cucumber.core.plugin.SerenityReporterParallel,pretty,timeline:build/test-results/timeline"

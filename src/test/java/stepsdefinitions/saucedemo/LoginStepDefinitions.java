@@ -5,12 +5,18 @@ import io.cucumber.java.Before;
 import io.cucumber.java.es.Cuando;
 import io.cucumber.java.es.Dado;
 import io.cucumber.java.es.Entonces;
-import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
+
 import net.serenitybdd.screenplay.actors.OnStage;
-import net.serenitybdd.screenplay.actors.OnlineCast;
-import net.thucydides.core.webdriver.ThucydidesWebDriverSupport;
+
+import org.hamcrest.Matchers;
+import questions.EstadoLogin;
+import questions.PaginaLogin;
 import tasks.AbrirPaginaLogin;
+import tasks.CerrarSesion;
 import tasks.IniciarSesion;
+
+import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
+
 
 public class LoginStepDefinitions {
 
@@ -31,13 +37,19 @@ public class LoginStepDefinitions {
     }
     @Entonces("debería ver la pagina de productos")
     public void deberiaVerLaPaginaDeProductos() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        OnStage.theActorInTheSpotlight().should(
+                seeThat("El resultado del login es: ", EstadoLogin.esExito(), Matchers.is(true))
+        );
     }
     @Entonces("debería poder cerrar sesión exitosamente")
     public void deberiaPoderCerrarSesionExitosamente() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        OnStage.theActorInTheSpotlight().attemptsTo(
+                CerrarSesion.delaAplicacion()
+        );
+        OnStage.theActorInTheSpotlight().should(
+                seeThat(PaginaLogin.estaPresente(), Matchers.containsString("Login"))
+        );
+
     }
 
 }
